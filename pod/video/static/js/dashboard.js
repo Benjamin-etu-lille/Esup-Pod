@@ -253,6 +253,7 @@ function appendDynamicForm(action) {
  * @param display_mode
  */
 function changeDisplayMode(display_mode) {
+  console.log("ALERTTT");
   displayMode = display_mode;
   btnDisplayMode.forEach((e) => e.classList.toggle("active"));
   refreshVideosSearch();

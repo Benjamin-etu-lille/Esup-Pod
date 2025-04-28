@@ -19,6 +19,8 @@ var countSelectedVideosBadge = document.getElementById(
   "countSelectedVideosBadge",
 );
 
+document.addEventListener("DOMContentLoaded", toggleBulkUpdateVisibility);
+
 /**
  * Get list of selected videos's titles based on selected videos
  *
@@ -118,7 +120,25 @@ function toggleSelectedVideo(item, container) {
   if (container === videosListContainerId) {
     replaceSelectedCountVideos(container);
   }
+  toggleBulkUpdateVisibility();
 }
+
+function toggleBulkUpdateVisibility() {
+  const container = document.getElementById('bulk-update-container');
+
+  // Vérifie si au moins une vidéo est sélectionnée dans n'importe quel conteneur
+  const hasSelectedVideos = Object.values(selectedVideos).some(videos => videos.length > 0);
+
+  // Affiche ou cache le conteneur en fonction de la sélection
+  if (hasSelectedVideos) {
+    container.style.display = 'block';
+  } else {
+    container.style.display = 'none';
+  }
+}
+
+
+
 
 /**
  * Clear videos selection: deselect all videos, reset badge count
